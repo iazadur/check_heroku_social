@@ -1,0 +1,75 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+{% block title_block %} {{user_other.user_profile.full_name}} @{{user_other.username}} {% endblock %}
+
+        {% block css_block %}
+                .profile-pic{
+                    max-width: 200px;
+                    max-height: 200px;
+                    margin: 0 auto;
+                    border-radius:50%
+
+                    }
+        {% endblock %}
+
+{% block body_block %}
+<br>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card card-body">
+<!--            <a href="{% url 'home' %}" class="btn btn-warning">&#8592; Back to Profile</a>-->
+<!--            <hr>-->
+<!--            <h3 style="text-align: center;">Account Setting</h3>-->
+<!--            <hr>-->
+<!--                {% if user.user_profile.profile_pic %}-->
+<!--            {% endif %}-->
+                 <img src="{{request.user.user_profile.profile_pic.url}}" alt="" class="profile-pic">
+            <br>
+            {% if not already_followed %}
+                <a href="{% url 'App_Login:follow' username=user_other.username %}" class="btn btn-light">&#8592; Follow </a>
+            {% else %}
+            <a href="{% url 'App_Login:unfollow' username=user_other.username %}" class="btn btn-primary">&#8592; UnFollow </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="card card-body">
+                <h3>@{{user_other.username}}</h3>
+                <h4>{{user_other.user_profile.full_name}}</h4>
+                <h6>Date Of Birth: {{user_other.user_profile.dob}}</h6>
+
+
+                <h6>
+                    <a href="{{user_other.user_profile.website}}">
+                        <span class="badge badge-pill badge-secondary">Website</span>
+                    </a>
+                    &nbsp;
+                    &nbsp;
+                    <a href="{{user_other.user_profile.facebook}}">
+                        <span class="badge badge-pill badge-success">Facebook</span>
+                    </a>
+                </h6>
+
+                <p>Description: {{user_other.user_profile.description}}</p>
+                <br>
+            <h4>{{user_other.post.count}} posts &nbsp; &nbsp; {{user_other.following.count}} Followers &nbsp; &nbsp; {{user_other.follower.count}} following</h4>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+
+<br>
+<br>
+<div class="row">
+    {% for post in user_other.post.all%}
+    <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{post.image.url}}" title="{{post.caption}}" alt="{{post.caption}}">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title_block %} {{title}} {% endblock %}
+{% block css_block %} {% endblock %}
+
+
+{% block body_block %}
+
+
+{% if search %}
+ {% for user in result %}
+
+<br>
+
+ <div class="card">
+ <div class="row">
+  <a href="{% url 'App_Login:user' username=user.username %}">
+  <div class="col-md-3">
+   <img class="rounded float-left" width="100px" height="100px" src="{{user.user_profile.profile_pic.url}}" alt="">
+  </div> </a>
+
+  <div class="col-md-9">
+   <h3><a style="text-decoration: none;" class="text-secondary" href="{% url 'App_Login:user' username=user.username %}">{{user.user_profile.full_name}} </a></h3>
+   <p><a style="text-decoration: none;" href="{% url 'App_Login:user' username=user.username %}">{{user.username}} </a></p>
+  </div>
+
+
+</div>
+</div>
+
+<br>
+ {% endfor %}
+{% else %}
+
+
+{% for post in posts %}
+<div class="row">
+ <div class="col-md-8">
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <h5 class="card-title"><a style="text-decoration: none;" class="text-dark" href="{% url 'App_Login:user' username=post.author %}">
+<img class="rounded-circle float-left" width="40px" height="40px" src="{{user.user_profile.profile_pic.url}}" alt="">
+  &nbsp; &nbsp; @{{post.author}}</a></h5>
+  </div>
+
+    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">
+            <h6>{{post.caption}}</h6>
+            <h5>{{post.liked_post.count}} Likes</h5>
+            {% if post.pk in liked_post_list %}
+            <a href="{% url 'App_Post:unliked' pk=post.pk %}">
+                <i class="fa fa-heart" style="font-size:36px"></i>
+            </a>
+            {% else %}
+            <a href="{% url 'App_Post:liked' pk=post.pk %}">
+                <i class="fa fa-heart-o" style="font-size:36px"></i>
+            </a>
+            {% endif %}
+
+        </h5>
+    </div>
+</div>
+
+ </div>
+    <div class="col-md-4"></div>
+</div>
+
+<br>
+<br>
+
+{% endfor %}
+
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+{% block title_block %} {{title}} {% endblock %}
+
+        {% block css_block %}
+<!--            .signup{-->
+<!--            border: 1px solid #ccc;-->
+<!--            padding: 20px;-->
+<!--            }-->
+        {% endblock %}
+
+{% block body_block %}
+        <form method="POST", action="", enctype="multipart/form-data">
+            {{form|crispy}}
+            {% csrf_token %}
+            <input type="submit" name="Update Information" class="btn btn-primary">
+        </form>
+{% endblock %}
