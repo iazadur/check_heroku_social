@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3g_zqt4s)12-dr&0%^dl#v8sh2l#dyf1cm*xccaa7_aebbh98u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['azadsocial.herokuapp.com',]
 
