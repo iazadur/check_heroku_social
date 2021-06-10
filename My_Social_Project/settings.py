@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3g_zqt4s)12-dr&0%^dl#v8sh2l#dyf1cm*xccaa7_aebbh98u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['iazadur-socialapp.herokuapp.com']
+ALLOWED_HOSTS = ['azadsocial.herokuapp.com',]
 
 
 # Application definition
@@ -79,16 +79,6 @@ WSGI_APPLICATION = 'My_Social_Project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'blogapp',
-#         'USER': 'postgres',
-#         'PASSWORD': '1234',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
 DATABASES = {
     'default': {
