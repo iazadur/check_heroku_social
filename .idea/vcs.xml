@@ -2,6 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/iazadur-socialapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/My_Social_Project" vcs="Git" />
   </component>
 </project>
